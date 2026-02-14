@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operatie Duinkerk | Duinkerke 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #000;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: opacity 0.3s;
+        }
+
+        .nav-menu a:hover {
+            opacity: 0.6;
+        }
+
+        .cta-button {
+            background: #000;
+            color: #fff;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: #fff;
+            max-width: 800px;
+            padding: 40px;
+        }
+
+        .hero-title {
+            font-size: 72px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+        }
+
+        /* Content Sections */
+        .section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 40px;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: #666;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            line-height: 1.8;
+        }
+
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .card {
+            background: #fff;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 30px;
+        }
+
+        .card-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .card-description {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin: 80px 0;
+        }
+
+        .info-item {
+            text-align: center;
+            padding: 40px 20px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .info-number {
+            font-size: 48px;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .info-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #666;
+        }
+
+        /* Full Width Image */
+        .full-image {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            margin: 80px 0;
+        }
+
+        /* Text Block */
+        .text-block {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .text-block h2 {
+            font-size: 36px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .text-block p {
+            font-size: 16px;
+            line-height: 1.9;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        /* Feature List */
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 60px 0;
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 25px;
+            border-left: 2px solid #000;
+            background: #fafafa;
+            font-size: 15px;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: #000;
+            color: #fff;
+            padding: 80px 60px;
+            margin: 80px 0;
+            text-align: center;
+        }
+
+        .highlight-box h3 {
+            font-size: 36px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .highlight-box p {
+            font-size: 18px;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 60px 0;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: opacity 0.3s;
+        }
+
+        .gallery img:hover {
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        .footer {
+            background: #f5f5f5;
+            padding: 60px 40px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 100px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .footer-subtitle {
+            font-size: 18px;
+            color: #666;
+            letter-spacing: 1px;
+        }
+
+        /* Timeline */
+        .timeline {
+            max-width: 900px;
+            margin: 80px auto;
+        }
+
+        .timeline-item {
+            margin-bottom: 60px;
+            padding-left: 40px;
+            border-left: 2px solid #e0e0e0;
+        }
+
+        .timeline-date {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 15px;
+        }
+
+        .timeline-title {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .timeline-content {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: #f9f9f9;
+            padding: 60px 40px;
+            margin: 80px 0;
+        }
+
+        .stats-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 64px;
+            font-weight: 300;
+            margin-bottom: 15px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">Operatie Duinkerk</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#missie">Missie</a></li>
+                    <li><a href="#locatie">Locatie</a></li>
+                    <li><a href="#planning">Planning</a></li>
+                    <li><a href="#geschiedenis">Geschiedenis</a></li>
+                    <li><a href="#praktisch">Praktisch</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="cta-button">10-12 Juli 2026</a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" style="background-image: url('https://a0.muscache.com/im/pictures/miso/Hosting-949173376884016182/original/dc4f6a47-d970-49f2-a992-516ee2bb132e.jpeg');">
+        <div class="hero-content">
+            <h1 class="hero-title">Operatie Duinkerk</h1>
+            <p class="hero-subtitle">Een Historische Missie | Duinkerke, Frankrijk</p>
+            <a href="#missie" class="cta-button">Ontdek De Missie</a>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="section" id="missie">
+        <h2 class="section-title">De Missie</h2>
+        <p class="section-subtitle">
+            Zeven vrienden. Drie dagen. Eén historische stad. Operatie Duinkerk is meer dan een weekend weg -
+            het is een reis door de tijd, op de voetsporen van Operatie Dynamo, de heroïsche evacuatie van 1940.
+        </p>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-number">7</div>
+                <div class="info-label">Team Members</div>
+            </div>
+            <div class="info-item">
+                <div class="info-number">3</div>
+                <div class="info-label">Dagen</div>
+            </div>
+            <div class="info-item">
+                <div class="info-number">10-12</div>
+                <div class="info-label">Juli 2026</div>
+            </div>
+            <div class="info-item">
+                <div class="info-number">∞</div>
+                <div class="info-label">Herinneringen</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="section" id="locatie">
+        <h2 class="section-title">Grand Appartement Industrieel-Chic</h2>
+        <p class="section-subtitle">
+            Ons fort voor dit weekend: een uniek industrieel appartement in een voormalige Dunkerquoise brouwerij.
+            Zes slaapkamers, een panoramisch terras van 70m², en het hart van Duinkerke op loopafstand.
+        </p>
+
+        <div class="gallery">
+            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-949173376884016182/original/dc4f6a47-d970-49f2-a992-516ee2bb132e.jpeg" alt="Appartement">
+            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-949173376884016182/original/27bcf6c0-dd34-4de5-96b0-9f8d496cec6a.jpeg" alt="Woonkamer">
+            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-949173376884016182/original/41ef6bfb-1e81-4a96-a817-c4299a62b82e.jpeg" alt="Slaapkamer">
+            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-949173376884016182/original/b00a1bf3-cfaa-4336-9c4d-d3355381532a.jpeg" alt="Keuken">
+            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-949173376884016182/original/ec2a854f-e747-4030-ab9a-a9990389a411.jpeg" alt="Badkamer">
+            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-949173376884016182/original/2dad763e-aea6-433c-82b2-33525098fe9d.jpeg" alt="Slaapkamer 2">
+            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-949173376884016182/original/5edad677-c01f-4065-b7de-af1d5c386827.jpeg" alt="Terras">
+            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-949173376884016182/original/d162169b-8333-4f8a-a7ca-2f1a421689c4.jpeg" alt="Detail">
+        </div>
+
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-label">Accommodatie</div>
+                    <h3 class="card-title">6 Slaapkamers</h3>
+                    <p class="card-description">Ruim voldoende voor ons team van 7. Twee kamers hebben zelfs een ensuite badkamer.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-label">Outdoor</div>
+                    <h3 class="card-title">70m² Terras</h3>
+                    <p class="card-description">Panoramisch terras perfect voor BBQ's, borrels en het genieten van de Franse zon.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-label">Locatie</div>
+                    <h3 class="card-title">Hart van Duinkerke</h3>
+                    <p class="card-description">500m van Place Jean-Bart, 10 min fietsen naar strand, 15 min lopen naar station.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Width Image -->
+    <img src="https://a0.muscache.com/im/pictures/miso/Hosting-949173376884016182/original/27bcf6c0-dd34-4de5-96b0-9f8d496cec6a.jpeg" alt="Interieur" class="full-image">
+
+    <!-- History Section -->
+    <section class="section" id="geschiedenis">
+        <h2 class="section-title">Operatie Dynamo: De Geschiedenis</h2>
+        <p class="section-subtitle">
+            Duinkerke is de locatie van één van de meest heroïsche operaties uit de Tweede Wereldoorlog.
+            Van 26 mei tot 4 juni 1940 werden 338.000 geallieerde soldaten geëvacueerd van deze stranden -
+            een race tegen de klok die de geschiedenis veranderde.
+        </p>
+
+        <div class="stats-bar">
+            <div class="stats-content">
+                <div>
+                    <div class="stat-number">338.000</div>
+                    <div class="stat-label">Geëvacueerde Soldaten</div>
+                </div>
+                <div>
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">Dagen Operatie</div>
+                </div>
+                <div>
+                    <div class="stat-number">1940</div>
+                    <div class="stat-label">Mei - Juni</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-block">
+            <h2>Wat We Gaan Verkennen</h2>
+            <p>
+                Tijdens onze missie duiken we diep in de geschiedenis van Duinkerke. We bezoeken de plekken
+                waar geschiedenis werd geschreven, van de stranden waarop Christopher Nolan's film werd opgenomen
+                tot de musea die de verhalen bewaren.
+            </p>
+        </div>
+
+        <ul class="feature-list">
+            <li>Musée Dunkerque 1940 - Operatie Dynamo Museum met authentieke verhalen en artefacten</li>
+            <li>Memorial du Souvenir - Indrukwekkend oorlogsmonument ter nagedachtenis aan de gevallenen</li>
+            <li>De Stranden van Dunkirk - Waar de evacuatie plaatsvond, dezelfde locatie als de film</li>
+            <li>Bunkers & Fortificaties - Langs de kust te bezichtigen, overblijfselen uit WW2</li>
+            <li>Commonwealth War Cemetery - Eerbetoon aan de soldaten die vielen tijdens de operatie</li>
+            <li>Fort des Dunes - Historisch fort dat een cruciale rol speelde in de verdediging</li>
+        </ul>
+    </section>
+
+    <!-- Highlight Box -->
+    <div class="highlight-box">
+        <h3>Operatie Duinkerk ⚓ Operatie Dynamo</h3>
+        <p>
+            Net als de historische Operatie Dynamo van 1940 een triomf van teamwork en vastberadenheid was,
+            wordt onze Operatie Duinkerk ook een epische missie. We lopen op dezelfde stranden waar
+            geschiedenis werd geschreven, met respect voor het verleden en oog voor avontuur.
+        </p>
+    </div>
+
+    <!-- Planning Section -->
+    <section class="section" id="planning">
+        <h2 class="section-title">De Planning</h2>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">Donderdag 10 Juli</div>
+                <h3 class="timeline-title">Aankomst & Check-in</h3>
+                <div class="timeline-content">
+                    Het fort innemen | Stad verkennen | BBQ op het 70m² terras | Welkomstborrel met de squad
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Vrijdag 11 Juli</div>
+                <h3 class="timeline-title">Geschiedenis & Avontuur</h3>
+                <div class="timeline-content">
+                    WW2 Tour: Musée Dunkerque 1940 & Memorial du Souvenir | Historische stranden verkennen |
+                    Bunkers langs de kust | Lunch in centrum | Franse keuken | Avond entertainment
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Zaterdag 12 Juli</div>
+                <h3 class="timeline-title">Afsluiting</h3>
+                <div class="timeline-content">
+                    Laatste ontbijt samen | Strand sessie | Laatste foto's | Check-out | Terugreis met volle rugzak herinneringen
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Grid -->
+    <section class="section">
+        <h2 class="section-title">Activiteiten</h2>
+
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-label">Strand & Zee</div>
+                    <h3 class="card-title">Malo-les-Bains</h3>
+                    <p class="card-description">
+                        Slechts 10 minuten fietsen naar het prachtige strand. Perfect voor beachvolleybal,
+                        zonsondergangen en watersport.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-label">Cultuur</div>
+                    <h3 class="card-title">UNESCO Erfgoed</h3>
+                    <p class="card-description">
+                        De Belfry of Dunkirk is UNESCO werelderfgoed. Ook het Musée Portuaire vertelt
+                        de maritieme geschiedenis van de stad.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-label">Culinair</div>
+                    <h3 class="card-title">Franse Keuken</h3>
+                    <p class="card-description">
+                        Omringd door authentieke Franse restaurants. Of we koken zelf met verse producten
+                        van lokale markten op ons terras.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practical Section -->
+    <section class="section" id="praktisch">
+        <h2 class="section-title">Praktische Informatie</h2>
+
+        <div class="text-block">
+            <h2>Wat Mee Te Nemen</h2>
+            <p>
+                Zwemspullen voor het strand, zonnebrand, goede wandelschoenen voor de geschiedenis tours,
+                camera voor alle memories, spelletjes voor op het terras, en natuurlijk interesse in de
+                rijke geschiedenis van deze fascinerende stad.
+            </p>
+        </div>
+
+        <ul class="feature-list">
+            <li>Zwemspullen - Strand here we come</li>
+            <li>Zonnebrand - Safety first</li>
+            <li>Goede schoenen - Voor wandelingen & tours</li>
+            <li>Camera - Memories vastleggen</li>
+            <li>Spelletjes - Voor op het terras</li>
+            <li>BBQ spullen - Als we willen grillen</li>
+            <li>Sportkleding - Beachvolleybal</li>
+            <li>Nieuwsgierigheid - Voor de geschiedenis</li>
+        </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h2 class="footer-title">Operatie Duinkerk</h2>
+            <p class="footer-subtitle">10-12 Juli 2026 | Duinkerke, Frankrijk</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
